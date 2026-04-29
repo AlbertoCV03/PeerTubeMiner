@@ -1,4 +1,3 @@
-
 package aiss.peertubeminer.model;
 
 import java.util.List;
@@ -11,23 +10,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "id",
+        "url",
         "name",
-        "description",
+        "host",
+        "avatars",
+        "id",
+        "hostRedundancyAllowed",
+        "followingCount",
+        "followersCount",
         "createdAt",
-    "url",
-
-    "host",
-    "avatars",
-    "hostRedundancyAllowed",
-    "followingCount",
-    "followersCount",
-    "banners",
-    "displayName",
-    "support",
-    "isLocal",
-    "updatedAt",
-    "ownerAccount"
+        "banners",
+        "displayName",
+        "description",
+        "support",
+        "isLocal",
+        "updatedAt",
+        "ownerAccount"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -226,7 +224,8 @@ public class Channel {
         this.ownerAccount = ownerAccount;
     }
 
-   /* @Override
+    /*
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(Channel.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
@@ -302,13 +301,14 @@ public class Channel {
         return sb.toString();
     }
     */
-   @Override
-   public String toString() {
-       return "Channel{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", description='" + description + '\'' +
-               ", createdAt='" + createdAt + '\'' +
-               '}';
-   }
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                '}';
+    }
+
 }
