@@ -1,15 +1,21 @@
 package aiss.peertubeminer.service;
 
-import aiss.peertubeminer.model.Channel;
+import aiss.peertubeminer.model.DTO.VideosDTO;
+import aiss.peertubeminer.model.channelmodels.Channel;
 import aiss.peertubeminer.model.DTO.ChannelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class ChannelService {
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    VideoService service;
 
     private static final String BASE_URI= "https://peertube.tv/api/v1/video-channels";
 
@@ -24,12 +30,13 @@ public class ChannelService {
     public ChannelDTO findChannelDTOByName(String name){
 
         Channel channel = restTemplate.getForObject(BASE_URI + "/" + name, Channel.class);
-
+        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName(name);
         ChannelDTO dto = new ChannelDTO();
         dto.setId(channel.getId());
         dto.setName(channel.getName());
         dto.setDescription(channel.getDescription());
         dto.setCreatedTime(channel.getCreatedAt());
+        dto.setVideos(List.of(videosDTO));
 
         return dto;
     }

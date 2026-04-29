@@ -1,4 +1,4 @@
-package aiss.peertubeminer.model;
+package aiss.peertubeminer.model.channelmodels;
 
 import java.util.List;
 import javax.annotation.processing.Generated;

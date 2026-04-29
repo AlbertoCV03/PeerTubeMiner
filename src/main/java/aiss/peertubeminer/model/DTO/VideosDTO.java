@@ -5,34 +5,29 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.List;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "id",
+        "uuid",
         "name",
         "description",
-        "createdAt",
-        "videos"
+        "createdAt"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChannelDTO {
-    @JsonProperty("id")
-    private Integer id;
+public class VideosDTO {
+    @JsonProperty("uuid")
+    private String id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("description")
     private String description;
     @JsonProperty("createdAt")
-    private String createdTime;
-    @JsonProperty("videos")
-    private List<VideosDTO> videos;
+    private String releaseTime;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,30 +47,21 @@ public class ChannelDTO {
         this.description = description;
     }
 
-    public String getCreatedTime() {
-        return createdTime;
+    public String getReleaseTime() {
+        return releaseTime;
     }
 
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public List<VideosDTO> getVideos() {
-        return videos;
-    }
-
-    public void setVideos(List<VideosDTO> videos) {
-        this.videos = videos;
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
     }
 
     @Override
     public String toString() {
-        return "ChannelDTO{" +
-                "id=" + id +
+        return "VideosDTO{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", createdTime='" + createdTime + '\'' +
-                ", videos=" + videos +
+                ", releaseTime='" + releaseTime + '\'' +
                 '}';
     }
 }
