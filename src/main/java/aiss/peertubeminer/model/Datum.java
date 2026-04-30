@@ -15,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "originallyPublishedAt",
         "truncatedDescription",
         "name",
-        "comments"
+        "comments",
+        "account"
 })
 @Generated("jsonschema2pojo")
 public class Datum {
@@ -36,6 +37,8 @@ public class Datum {
     private String name;
     @JsonProperty("comments")
     private Integer comments;
+    @JsonProperty("account")
+    private Account user;
 
     public Integer getId() {
         return id;
@@ -99,6 +102,14 @@ public class Datum {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Account getUser() {
+        return user;
+    }
+
+    public void setUser(Account user) {
+        this.user = user;
     }
 
     @Override

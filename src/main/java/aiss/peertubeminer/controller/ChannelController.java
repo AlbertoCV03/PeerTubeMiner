@@ -11,7 +11,7 @@ public class ChannelController {
     @Autowired
     ChannelService channelService;
 
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ChannelDTO getChannel(@PathVariable String id){
         return channelService.findChannelDTOByName(id);
     }

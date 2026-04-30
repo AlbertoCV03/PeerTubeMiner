@@ -1,5 +1,6 @@
 package aiss.peertubeminer.model.DTO;
 
+import aiss.peertubeminer.model.UserDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "uuid",
         "name",
         "description",
-        "createdAt"
+        "createdAt",
+        "User"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VideosDTO {
@@ -22,6 +24,8 @@ public class VideosDTO {
     private String description;
     @JsonProperty("createdAt")
     private String releaseTime;
+    @JsonProperty("User")
+    private UserDTO userDTO;
 
     public String getId() {
         return id;
@@ -55,6 +59,14 @@ public class VideosDTO {
         this.releaseTime = releaseTime;
     }
 
+    public UserDTO getUser() {
+        return userDTO;
+    }
+
+    public void setUser(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
+
     @Override
     public String toString() {
         return "VideosDTO{" +
@@ -62,6 +74,7 @@ public class VideosDTO {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", releaseTime='" + releaseTime + '\'' +
+                ", user=" + userDTO +
                 '}';
     }
 }
