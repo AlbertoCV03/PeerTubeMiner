@@ -1,7 +1,6 @@
 
-package aiss.peertubeminer.model;
+package aiss.peertubeminer.model.DTO;
 
-import java.util.List;
 import javax.annotation.processing.Generated;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,7 +26,7 @@ public class UserDTO {
     @JsonProperty("user_link")
     private String user_link;
     @JsonProperty("picture_link")
-    private List<Avatar> picture_link;
+    private String picture_link;
 
     public String getName() {
         return name;
@@ -53,11 +52,11 @@ public class UserDTO {
         this.user_link = user_link;
     }
 
-    public List<Avatar> getPicture_link() {
+    public String getPicture_link() {
         return picture_link;
     }
 
-    public void setPicture_link(List<Avatar> picture_link) {
+    public void setPicture_link(String picture_link) {
         this.picture_link = picture_link;
     }
 

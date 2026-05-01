@@ -1,15 +1,13 @@
 package aiss.peertubeminer.service;
 
 import aiss.peertubeminer.model.DTO.VideosDTO;
-import aiss.peertubeminer.model.Videos;
+import aiss.peertubeminer.model.videomodels.Videos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class VideoServiceTest {

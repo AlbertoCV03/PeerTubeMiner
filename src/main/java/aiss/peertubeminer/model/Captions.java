@@ -1,13 +1,12 @@
 
 package aiss.peertubeminer.model;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.processing.Generated;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -16,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Videos {
+public class Captions {
 
     @JsonProperty("total")
     private Integer total;
@@ -45,22 +44,9 @@ public class Videos {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Videos").append('[');
-        sb.append("total");
-        sb.append('=');
-        sb.append(((this.total == null)?"<null>":this.total));
-        sb.append(',');
-        sb.append("data");
-        sb.append('=');
-        sb.append(((this.data == null)?"<null>":this.data));
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
+        return "Captions{" +
+                "total=" + total +
+                ", data=" + data +
+                '}';
     }
-
 }

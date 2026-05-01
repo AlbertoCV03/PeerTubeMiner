@@ -1,10 +1,12 @@
 package aiss.peertubeminer.model.DTO;
 
-import aiss.peertubeminer.model.UserDTO;
+import aiss.peertubeminer.model.CaptionDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.Arrays;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "name",
         "description",
         "createdAt",
-        "User"
+        "User",
+        "Caption"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VideosDTO {
@@ -26,6 +29,9 @@ public class VideosDTO {
     private String releaseTime;
     @JsonProperty("User")
     private UserDTO userDTO;
+    @JsonProperty("Caption")
+    private CaptionDTO[] captionDTO;
+
 
     public String getId() {
         return id;
@@ -67,14 +73,24 @@ public class VideosDTO {
         this.userDTO = userDTO;
     }
 
+    public CaptionDTO[] getCaptionDTO() {
+        return captionDTO;
+    }
+
+    public void setCaptionDTO(CaptionDTO[] captionDTO) {
+        this.captionDTO = captionDTO;
+    }
+
     @Override
     public String toString() {
         return "VideosDTO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + description.replaceAll("\\R","") + '\'' +
                 ", releaseTime='" + releaseTime + '\'' +
                 ", user=" + userDTO +
-                '}';
+                ", captionDTO=" + Arrays.stream(captionDTO).toList() +
+                '}'+"\n";
     }
+
 }

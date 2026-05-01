@@ -1,5 +1,5 @@
 
-package aiss.peertubeminer.model;
+package aiss.peertubeminer.model.usermodels;
 
 import javax.annotation.processing.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "updatedAt"
 })
 @Generated("jsonschema2pojo")
-public class Avatar {
+public class Avatar__1 {
 
     @JsonProperty("path")
     private String path;
@@ -94,7 +94,7 @@ public class Avatar {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Avatar.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Avatar__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("path");
         sb.append('=');
         sb.append(((this.path == null)?"<null>":this.path));
