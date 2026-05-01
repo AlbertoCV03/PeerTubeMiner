@@ -1,6 +1,7 @@
     package aiss.peertubeminer.service;
 
-    import aiss.peertubeminer.model.CaptionDTO;
+    import aiss.peertubeminer.model.CommentDTO;
+    import aiss.peertubeminer.model.DTO.CaptionDTO;
     import aiss.peertubeminer.model.DTO.VideosDTO;
     import aiss.peertubeminer.model.videomodels.Datum;
     import aiss.peertubeminer.model.DTO.UserDTO;
@@ -20,6 +21,9 @@
 
         @Autowired
         CaptionService captionService;
+
+        @Autowired
+        CommentService commentService;
 
         private static final String BASE_URI= "https://peertube.tv/api/v1/video-channels";
 
@@ -51,6 +55,9 @@
 
                 CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getUuid());
                 videoDTO.setCaptionDTO(captionDTO);
+
+                CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getUuid());
+                videoDTO.setCommentDTO(commentDTO);
 
                 videosDTO.add(videoDTO);
 

@@ -1,10 +1,8 @@
 package aiss.peertubeminer.service;
 
-import aiss.peertubeminer.model.CaptionDTO;
-import aiss.peertubeminer.model.Captions;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import aiss.peertubeminer.model.DTO.CaptionDTO;
+import aiss.peertubeminer.model.captionmodels.Captions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

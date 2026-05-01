@@ -1,6 +1,6 @@
 package aiss.peertubeminer.model.DTO;
 
-import aiss.peertubeminer.model.CaptionDTO;
+import aiss.peertubeminer.model.CommentDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +15,8 @@ import java.util.Arrays;
         "description",
         "createdAt",
         "User",
-        "Caption"
+        "Caption",
+        "Comment"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VideosDTO {
@@ -31,6 +32,8 @@ public class VideosDTO {
     private UserDTO userDTO;
     @JsonProperty("Caption")
     private CaptionDTO[] captionDTO;
+    @JsonProperty("Comment")
+    private CommentDTO[] commentDTO;
 
 
     public String getId() {
@@ -81,6 +84,14 @@ public class VideosDTO {
         this.captionDTO = captionDTO;
     }
 
+    public CommentDTO[] getCommentDTO() {
+        return commentDTO;
+    }
+
+    public void setCommentDTO(CommentDTO[] commentDTO) {
+        this.commentDTO = commentDTO;
+    }
+
     @Override
     public String toString() {
         return "VideosDTO{" +
@@ -90,7 +101,7 @@ public class VideosDTO {
                 ", releaseTime='" + releaseTime + '\'' +
                 ", user=" + userDTO +
                 ", captionDTO=" + Arrays.stream(captionDTO).toList() +
+                ", commentDTO=" + Arrays.toString(commentDTO) +
                 '}'+"\n";
     }
-
 }
