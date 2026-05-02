@@ -1,5 +1,5 @@
 
-package aiss.peertubeminer.model.channelmodels;
+package aiss.peertubeminer.model.peertube.usermodels;
 
 import javax.annotation.processing.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,48 +8,28 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "height",
-    "width",
     "path",
     "fileUrl",
+    "width",
+    "height",
     "createdAt",
     "updatedAt"
 })
 @Generated("jsonschema2pojo")
-public class Banner {
+public class Avatar__1 {
 
-    @JsonProperty("height")
-    private Integer height;
-    @JsonProperty("width")
-    private Integer width;
     @JsonProperty("path")
     private String path;
     @JsonProperty("fileUrl")
     private String fileUrl;
+    @JsonProperty("width")
+    private Integer width;
+    @JsonProperty("height")
+    private Integer height;
     @JsonProperty("createdAt")
     private String createdAt;
     @JsonProperty("updatedAt")
     private String updatedAt;
-
-    @JsonProperty("height")
-    public Integer getHeight() {
-        return height;
-    }
-
-    @JsonProperty("height")
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    @JsonProperty("width")
-    public Integer getWidth() {
-        return width;
-    }
-
-    @JsonProperty("width")
-    public void setWidth(Integer width) {
-        this.width = width;
-    }
 
     @JsonProperty("path")
     public String getPath() {
@@ -69,6 +49,26 @@ public class Banner {
     @JsonProperty("fileUrl")
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl;
+    }
+
+    @JsonProperty("width")
+    public Integer getWidth() {
+        return width;
+    }
+
+    @JsonProperty("width")
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    @JsonProperty("height")
+    public Integer getHeight() {
+        return height;
+    }
+
+    @JsonProperty("height")
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     @JsonProperty("createdAt")
@@ -94,15 +94,7 @@ public class Banner {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Banner.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("height");
-        sb.append('=');
-        sb.append(((this.height == null)?"<null>":this.height));
-        sb.append(',');
-        sb.append("width");
-        sb.append('=');
-        sb.append(((this.width == null)?"<null>":this.width));
-        sb.append(',');
+        sb.append(Avatar__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("path");
         sb.append('=');
         sb.append(((this.path == null)?"<null>":this.path));
@@ -110,6 +102,14 @@ public class Banner {
         sb.append("fileUrl");
         sb.append('=');
         sb.append(((this.fileUrl == null)?"<null>":this.fileUrl));
+        sb.append(',');
+        sb.append("width");
+        sb.append('=');
+        sb.append(((this.width == null)?"<null>":this.width));
+        sb.append(',');
+        sb.append("height");
+        sb.append('=');
+        sb.append(((this.height == null)?"<null>":this.height));
         sb.append(',');
         sb.append("createdAt");
         sb.append('=');

@@ -1,5 +1,5 @@
 
-package aiss.peertubeminer.model.usermodels;
+package aiss.peertubeminer.model.peertube.usermodels;
 
 import java.util.List;
 import javax.annotation.processing.Generated;

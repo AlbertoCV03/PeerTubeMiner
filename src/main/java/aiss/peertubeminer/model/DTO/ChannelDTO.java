@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 @JsonPropertyOrder({
         "id",
         "name",
         "description",
-        "createdAt",
+        "createdTime",
         "videos"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -23,7 +23,7 @@ public class ChannelDTO {
     private String name;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("createdAt")
+    @JsonProperty("createdTime")
     private String createdTime;
     @JsonProperty("videos")
     private List<VideosDTO> videos;

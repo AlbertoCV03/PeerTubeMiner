@@ -1,7 +1,7 @@
 package aiss.peertubeminer.service;
 
 import aiss.peertubeminer.model.DTO.VideosDTO;
-import aiss.peertubeminer.model.channelmodels.Channel;
+import aiss.peertubeminer.model.peertube.channelmodels.Channel;
 import aiss.peertubeminer.model.DTO.ChannelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

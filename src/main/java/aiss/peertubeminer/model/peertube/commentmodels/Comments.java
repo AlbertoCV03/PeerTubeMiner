@@ -1,5 +1,5 @@
 
-package aiss.peertubeminer.model;
+package aiss.peertubeminer.model.peertube.commentmodels;
 
 import java.util.LinkedHashMap;
 import java.util.List;

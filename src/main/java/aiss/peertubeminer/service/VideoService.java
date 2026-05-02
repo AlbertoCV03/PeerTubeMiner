@@ -1,11 +1,11 @@
     package aiss.peertubeminer.service;
 
-    import aiss.peertubeminer.model.CommentDTO;
+    import aiss.peertubeminer.model.DTO.CommentDTO;
     import aiss.peertubeminer.model.DTO.CaptionDTO;
     import aiss.peertubeminer.model.DTO.VideosDTO;
-    import aiss.peertubeminer.model.videomodels.Datum;
+    import aiss.peertubeminer.model.peertube.videomodels.Datum;
     import aiss.peertubeminer.model.DTO.UserDTO;
-    import aiss.peertubeminer.model.videomodels.Videos;
+    import aiss.peertubeminer.model.peertube.videomodels.Videos;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Service;
     import org.springframework.web.client.RestTemplate;
@@ -45,11 +45,11 @@
                 videoDTO.setReleaseTime(videolist.get(i).getCreatedAt());
 
                 UserDTO userDTO=new UserDTO();
-                userDTO.setId(videolist.get(i).getUser().getId());
-                userDTO.setName(videolist.get(i).getUser().getName());
-                userDTO.setUser_link(videolist.get(i).getUser().getUrl());
-                Integer picture_link_index=videolist.get(i).getUser().getAvatars().size() -1;
-                String picture_link= videolist.get(i).getUser().getAvatars().get(picture_link_index).getFileUrl();
+                userDTO.setId(videolist.get(i).getAccount().getId());
+                userDTO.setName(videolist.get(i).getAccount().getName());
+                userDTO.setUser_link(videolist.get(i).getAccount().getUrl());
+                Integer picture_link_index=videolist.get(i).getAccount().getAvatars().size() -1;
+                String picture_link= videolist.get(i).getAccount().getAvatars().get(picture_link_index).getFileUrl();
                 userDTO.setPicture_link(picture_link);
                 videoDTO.setUser(userDTO);
 
@@ -58,6 +58,8 @@
 
                 CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getUuid());
                 videoDTO.setCommentDTO(commentDTO);
+
+
 
                 videosDTO.add(videoDTO);
 

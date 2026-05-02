@@ -1,6 +1,5 @@
 package aiss.peertubeminer.model.DTO;
 
-import aiss.peertubeminer.model.CommentDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -68,10 +67,12 @@ public class VideosDTO {
         this.releaseTime = releaseTime;
     }
 
+    @JsonProperty("User")
     public UserDTO getUser() {
         return userDTO;
     }
 
+    @JsonProperty("User")
     public void setUser(UserDTO userDTO) {
         this.userDTO = userDTO;
     }

@@ -1,8 +1,7 @@
 package aiss.peertubeminer.service;
 
-import aiss.peertubeminer.model.CommentDTO;
-import aiss.peertubeminer.model.Comments;
-import aiss.peertubeminer.model.DTO.CaptionDTO;
+import aiss.peertubeminer.model.DTO.CommentDTO;
+import aiss.peertubeminer.model.peertube.commentmodels.Comments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

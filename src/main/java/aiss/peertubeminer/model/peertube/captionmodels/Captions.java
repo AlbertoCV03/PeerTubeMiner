@@ -1,5 +1,5 @@
 
-package aiss.peertubeminer.model.captionmodels;
+package aiss.peertubeminer.model.peertube.captionmodels;
 
 import java.util.List;
 import javax.annotation.processing.Generated;

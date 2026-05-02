@@ -1,7 +1,7 @@
 package aiss.peertubeminer.service;
 
 import aiss.peertubeminer.model.DTO.VideosDTO;
-import aiss.peertubeminer.model.videomodels.Videos;
+import aiss.peertubeminer.model.peertube.videomodels.Videos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

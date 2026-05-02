@@ -1,9 +1,6 @@
 
-package aiss.peertubeminer.model;
+package aiss.peertubeminer.model.peertube.commentmodels;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 import javax.annotation.processing.Generated;
 
 import com.fasterxml.jackson.annotation.*;
