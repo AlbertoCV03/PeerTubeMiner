@@ -38,8 +38,8 @@
         }*/
 
         public VideosDTO[] findAllVideosDTOOfChannelName(String name,Integer maxVideos,Integer maxComments){
-            maxVideos=(maxVideos!=null)?maxVideos:10;
-            maxComments=(maxComments!=null)?maxComments:2;
+            /*maxVideos=(maxVideos!=null)?maxVideos:10;
+            maxComments=(maxComments!=null)?maxComments:2;*/
             Videos video= findAllVideosOfChannelName(name,maxVideos);
             List<Datum> videolist=video.getData();
             List<VideosDTO> videosDTO=new ArrayList<>();

@@ -13,7 +13,7 @@ public class ChannelController {
 
 
     @GetMapping("/{id}")
-    public ChannelDTO getChannel(@PathVariable String id,@RequestParam Integer maxVideos,@RequestParam Integer maxComments){
+    public ChannelDTO getChannel(@PathVariable String id,@RequestParam(defaultValue = "10") Integer maxVideos,@RequestParam(defaultValue = "2") Integer maxComments){
         return channelService.findChannelDTOByName(id,maxVideos,maxComments);
     }
 
