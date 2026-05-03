@@ -45,7 +45,7 @@
             List<VideosDTO> videosDTO=new ArrayList<>();
             for(Integer i=0;i<videolist.size();i++){
                 VideosDTO videoDTO=new VideosDTO();
-                videoDTO.setId(videolist.get(i).getUuid());
+                videoDTO.setId(videolist.get(i).getId());
                 videoDTO.setName(videolist.get(i).getName());
                 videoDTO.setDescription(videolist.get(i).getDescription());
                 videoDTO.setReleaseTime(videolist.get(i).getCreatedAt());
@@ -59,10 +59,10 @@
                 userDTO.setPicture_link(picture_link);
                 videoDTO.setUser(userDTO);
 
-                CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getUuid());
+                CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getId());
                 videoDTO.setCaptionDTO(captionDTO);
 
-                CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getUuid(),maxComments);
+                CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getId(),maxComments);
                 videoDTO.setCommentDTO(commentDTO);
 
 

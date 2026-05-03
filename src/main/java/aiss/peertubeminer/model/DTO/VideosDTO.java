@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "uuid",
+        "id",
         "name",
         "description",
         "createdAt",
@@ -19,7 +19,7 @@ import java.util.Arrays;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VideosDTO {
-    @JsonProperty("uuid")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("name")
     private String name;
@@ -29,9 +29,9 @@ public class VideosDTO {
     private String releaseTime;
     @JsonProperty("user")
     private UserDTO userDTO;
-    @JsonProperty("caption")
+    @JsonProperty("captions")
     private CaptionDTO[] captionDTO;
-    @JsonProperty("comment")
+    @JsonProperty("comments")
     private CommentDTO[] commentDTO;
 
 

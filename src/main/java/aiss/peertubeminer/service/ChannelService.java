@@ -34,7 +34,7 @@ public class ChannelService {
         Channel channel = restTemplate.getForObject(BASE_URI + "/" + name, Channel.class);
         VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName(name,maxVideos,maxComments);
         ChannelDTO dto = new ChannelDTO();
-        dto.setId(channel.getId());
+        dto.setId(channel.getId().toString());
         dto.setName(channel.getName());
         dto.setDescription(channel.getDescription());
         dto.setCreatedTime(channel.getCreatedAt());

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "uuid",
+    "id",
         "createdAt",
         "description",
         "name",
@@ -19,8 +19,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @Generated("jsonschema2pojo")
 public class Datum {
 
-    @JsonProperty("uuid")
-    private String uuid;
+    @JsonProperty("id")
+    private String id;
     @JsonProperty("createdAt")
     private String createdAt;
     @JsonProperty("description")
@@ -30,14 +30,14 @@ public class Datum {
     @JsonProperty("account")
     private Account account;
 
-    @JsonProperty("uuid")
-    public String getUuid() {
-        return uuid;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("uuid")
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    @JsonProperty("id")
+    public void setId(String uuid) {
+        this.id = uuid;
     }
 
     @JsonProperty("createdAt")
@@ -83,7 +83,7 @@ public class Datum {
     @Override
     public String toString() {
         return "Datum{" +
-                "uuid='" + uuid + '\'' +
+                "id='" + id + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
