@@ -17,4 +17,8 @@ public class ChannelController {
         return channelService.findChannelDTOByName(id,maxVideos,maxComments);
     }
 
+    @PostMapping("/{id}")
+    public void postChannel(@PathVariable String id,@RequestParam(defaultValue = "10") Integer maxVideos,@RequestParam(defaultValue = "2") Integer maxComments) {
+        channelService.postChannelDTOByName(id, maxVideos, maxComments);
+    }
 }
