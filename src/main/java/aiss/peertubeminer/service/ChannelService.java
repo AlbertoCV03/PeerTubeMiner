@@ -27,10 +27,12 @@ public class ChannelService {
 
     }
 
-    public ChannelDTO findChannelDTOByName(String name){
+    public ChannelDTO findChannelDTOByName(String name,Integer maxVideos,Integer maxComments){
 
+        maxVideos=(maxVideos!=null)?maxVideos:10;
+        maxComments=(maxComments!=null)?maxComments:2;
         Channel channel = restTemplate.getForObject(BASE_URI + "/" + name, Channel.class);
-        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName(name);
+        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName(name,maxVideos,maxComments);
         ChannelDTO dto = new ChannelDTO();
         dto.setId(channel.getId());
         dto.setName(channel.getName());
@@ -39,5 +41,9 @@ public class ChannelService {
         dto.setVideos(List.of(videosDTO));
 
         return dto;
+    }
+
+    public ChannelDTO findChannelDTOByName(String name){
+        return findChannelDTOByName(name,10,2);
     }
 }

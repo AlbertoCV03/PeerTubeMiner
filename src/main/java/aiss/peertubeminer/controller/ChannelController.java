@@ -11,9 +11,10 @@ public class ChannelController {
     @Autowired
     ChannelService channelService;
 
+
     @GetMapping("/{id}")
-    public ChannelDTO getChannel(@PathVariable String id){
-        return channelService.findChannelDTOByName(id);
+    public ChannelDTO getChannel(@PathVariable String id,@RequestParam Integer maxVideos,@RequestParam Integer maxComments){
+        return channelService.findChannelDTOByName(id,maxVideos,maxComments);
     }
 
 }

@@ -18,14 +18,14 @@ class VideoServiceTest {
     @Test
     @DisplayName("List Videos")
     void findAllVideosOfChannelName(){
-        Videos videos= service.findAllVideosOfChannelName("she_drives_mobility@tube.tchncs.de");
+        Videos videos= service.findAllVideosOfChannelName("she_drives_mobility@tube.tchncs.de",null);
         System.out.println(videos);
     }
 
      @Test
     @DisplayName("List VideosDTO")
     void findAllVideosDTOOfChannelName(){
-        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName("she_drives_mobility@tube.tchncs.de");
+        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName("she_drives_mobility@tube.tchncs.de",null,null);
         System.out.println(List.of(videosDTO));
     }
 

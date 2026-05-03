@@ -27,14 +27,20 @@
 
         private static final String BASE_URI= "https://peertube.tv/api/v1/video-channels";
 
-        public Videos findAllVideosOfChannelName(String name){
-
-            Videos videos= restTemplate.getForObject(BASE_URI+"/"+name+"/videos",Videos.class);
+        public Videos findAllVideosOfChannelName(String name,Integer maxVideos){
+            maxVideos=(maxVideos!=null)?maxVideos:10;
+            String count="?count="+maxVideos;
+            Videos videos= restTemplate.getForObject(BASE_URI+"/"+name+"/videos"+count,Videos.class);
             return videos;
         }
+        /*public Videos findAllVideosOfChannelName(String name){
+            return findAllVideosOfChannelName(name,10);
+        }*/
 
-        public VideosDTO[] findAllVideosDTOOfChannelName(String name){
-            Videos video= findAllVideosOfChannelName(name);
+        public VideosDTO[] findAllVideosDTOOfChannelName(String name,Integer maxVideos,Integer maxComments){
+            maxVideos=(maxVideos!=null)?maxVideos:10;
+            maxComments=(maxComments!=null)?maxComments:2;
+            Videos video= findAllVideosOfChannelName(name,maxVideos);
             List<Datum> videolist=video.getData();
             List<VideosDTO> videosDTO=new ArrayList<>();
             for(Integer i=0;i<videolist.size();i++){
@@ -56,7 +62,7 @@
                 CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getUuid());
                 videoDTO.setCaptionDTO(captionDTO);
 
-                CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getUuid());
+                CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getUuid(),maxComments);
                 videoDTO.setCommentDTO(commentDTO);
 
 
@@ -72,4 +78,9 @@
             return res;
 
         }
+
+        /*public VideosDTO[] findAllVideosDTOOfChannelName(String name){
+            return findAllVideosDTOOfChannelName(name,10,2);
+        }*/
+
     }

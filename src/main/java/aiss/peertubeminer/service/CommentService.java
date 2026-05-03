@@ -17,14 +17,18 @@ public class CommentService {
 
     private static final String BASE_URI="https://peertube.tv/api/v1/videos/";
 
-    public Comments findAllComments(String id){
-        Comments comments=restTemplate.getForObject(BASE_URI+id+"/comment-threads", Comments.class);
+    public Comments findAllComments(String id,Integer maxComments){
+        String count="?count="+maxComments;
+        Comments comments=restTemplate.getForObject(BASE_URI+id+"/comment-threads"+count, Comments.class);
         return comments;
     }
+    /*public Comments findAllComments(String id){
+        return findAllComments(id,2);
+    } */
 
-    public CommentDTO[] findAllCommentsDTO(String id){
+    public CommentDTO[] findAllCommentsDTO(String id,Integer maxComments){
 
-        Comments comments=findAllComments(id);
+        Comments comments=findAllComments(id,maxComments);
         List<CommentDTO> commentDTOS=new ArrayList<>();
         for(Integer i=0;i<comments.getData().size();i++){
             CommentDTO commentDTO=new CommentDTO();
