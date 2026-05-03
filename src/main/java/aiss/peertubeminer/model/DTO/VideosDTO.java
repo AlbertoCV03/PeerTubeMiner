@@ -27,11 +27,11 @@ public class VideosDTO {
     private String description;
     @JsonProperty("createdAt")
     private String releaseTime;
-    @JsonProperty("User")
+    @JsonProperty("user")
     private UserDTO userDTO;
-    @JsonProperty("Caption")
+    @JsonProperty("caption")
     private CaptionDTO[] captionDTO;
-    @JsonProperty("Comment")
+    @JsonProperty("comment")
     private CommentDTO[] commentDTO;
 
 
@@ -67,12 +67,12 @@ public class VideosDTO {
         this.releaseTime = releaseTime;
     }
 
-    @JsonProperty("User")
+    @JsonProperty("user")
     public UserDTO getUser() {
         return userDTO;
     }
 
-    @JsonProperty("User")
+    @JsonProperty("user")
     public void setUser(UserDTO userDTO) {
         this.userDTO = userDTO;
     }
