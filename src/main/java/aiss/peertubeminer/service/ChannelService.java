@@ -44,7 +44,7 @@ public class ChannelService {
 
     public ChannelDTO postChannelDTOByName(String name,Integer maxVideos,Integer maxComments){
         ChannelDTO channelDTO=findChannelDTOByName(name, maxVideos, maxComments);
-        restTemplate.postForObject("http://localhost:8080/api/channels",channelDTO, Void.class);
+        restTemplate.postForObject("http://localhost:8080/api/channels",channelDTO, ChannelDTO.class);
         return channelDTO;
     }
 
