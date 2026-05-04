@@ -13,9 +13,9 @@ import java.util.Arrays;
         "name",
         "description",
         "createdAt",
-        "User",
-        "Caption",
-        "Comment"
+        "user",
+        "caption",
+        "comment"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VideosDTO {
@@ -34,61 +34,59 @@ public class VideosDTO {
     @JsonProperty("comments")
     private CommentDTO[] commentDTO;
 
-
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
-
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }
-
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
-
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
-
+    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
-
+    @JsonProperty("description")
     public void setDescription(String description) {
         this.description = description;
     }
-
+    @JsonProperty("createdAt")
     public String getReleaseTime() {
         return releaseTime;
     }
-
+    @JsonProperty("createdAt")
     public void setReleaseTime(String releaseTime) {
         this.releaseTime = releaseTime;
     }
-
     @JsonProperty("user")
     public UserDTO getUser() {
         return userDTO;
     }
-
     @JsonProperty("user")
     public void setUser(UserDTO userDTO) {
         this.userDTO = userDTO;
     }
-
+    @JsonProperty("captions")
     public CaptionDTO[] getCaptionDTO() {
         return captionDTO;
     }
-
+    @JsonProperty("captions")
     public void setCaptionDTO(CaptionDTO[] captionDTO) {
         this.captionDTO = captionDTO;
     }
-
+    @JsonProperty("comments")
     public CommentDTO[] getCommentDTO() {
         return commentDTO;
     }
-
+    @JsonProperty("comments")
     public void setCommentDTO(CommentDTO[] commentDTO) {
         this.commentDTO = commentDTO;
     }
