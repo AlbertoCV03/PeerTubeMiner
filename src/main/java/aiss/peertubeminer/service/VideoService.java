@@ -28,7 +28,7 @@
         private static final String BASE_URI= "https://peertube.tv/api/v1/video-channels";
 
         public Videos findAllVideosOfChannelName(String name,Integer maxVideos){
-            maxVideos=(maxVideos!=null)?maxVideos:10;
+            //maxVideos=(maxVideos!=null)?maxVideos:10;
             String count="?count="+maxVideos;
             Videos videos= restTemplate.getForObject(BASE_URI+"/"+name+"/videos"+count,Videos.class);
             return videos;
@@ -51,7 +51,7 @@
                 videoDTO.setReleaseTime(videolist.get(i).getCreatedAt());
 
                 UserDTO userDTO=new UserDTO();
-                userDTO.setId(videolist.get(i).getAccount().getId());
+                userDTO.setId(null);
                 //userDTO.setId(null);
                 userDTO.setName(videolist.get(i).getAccount().getName());
                 userDTO.setUser_link(videolist.get(i).getAccount().getUrl());
