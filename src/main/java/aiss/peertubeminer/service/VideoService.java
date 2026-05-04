@@ -52,6 +52,7 @@
 
                 UserDTO userDTO=new UserDTO();
                 userDTO.setId(videolist.get(i).getAccount().getId());
+                //userDTO.setId(null);
                 userDTO.setName(videolist.get(i).getAccount().getName());
                 userDTO.setUser_link(videolist.get(i).getAccount().getUrl());
                 Integer picture_link_index=videolist.get(i).getAccount().getAvatars().size() -1;

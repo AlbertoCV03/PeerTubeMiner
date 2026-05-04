@@ -12,10 +12,10 @@ import java.util.Arrays;
         "id",
         "name",
         "description",
-        "createdAt",
+        "releaseTime",
         "user",
-        "caption",
-        "comment"
+        "captions",
+        "comments"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VideosDTO {
@@ -25,7 +25,7 @@ public class VideosDTO {
     private String name;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("createdAt")
+    @JsonProperty("releaseTime")
     private String releaseTime;
     @JsonProperty("user")
     private UserDTO userDTO;
@@ -58,11 +58,11 @@ public class VideosDTO {
     public void setDescription(String description) {
         this.description = description;
     }
-    @JsonProperty("createdAt")
+    @JsonProperty("releaseTime")
     public String getReleaseTime() {
         return releaseTime;
     }
-    @JsonProperty("createdAt")
+    @JsonProperty("releaseTime")
     public void setReleaseTime(String releaseTime) {
         this.releaseTime = releaseTime;
     }
