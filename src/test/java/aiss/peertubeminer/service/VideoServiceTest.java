@@ -24,7 +24,7 @@ class VideoServiceTest {
 
      @Test
     @DisplayName("List VideosDTO")
-    void findAllVideosDTOOfChannelName(){
+    void findAllVideosDTOOfChannelName() throws InterruptedException {
         VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName("she_drives_mobility@tube.tchncs.de",null,null);
         System.out.println(List.of(videosDTO));
     }

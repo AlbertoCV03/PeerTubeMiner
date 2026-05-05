@@ -27,7 +27,7 @@ public class ChannelService {
 
     }
 
-    public ChannelDTO findChannelDTOByName(String name,Integer maxVideos,Integer maxComments){
+    public ChannelDTO findChannelDTOByName(String name,Integer maxVideos,Integer maxComments) throws InterruptedException {
 
         /*maxVideos=(maxVideos!=null)?maxVideos:10;
         maxComments=(maxComments!=null)?maxComments:2;*/
@@ -42,7 +42,7 @@ public class ChannelService {
         return dto;
     }
 
-    public ChannelDTO postChannelDTOByName(String name,Integer maxVideos,Integer maxComments){
+    public ChannelDTO postChannelDTOByName(String name,Integer maxVideos,Integer maxComments) throws InterruptedException {
         ChannelDTO channelDTO=findChannelDTOByName(name, maxVideos, maxComments);
         restTemplate.postForObject("http://localhost:8080/videominer/channels",channelDTO, ChannelDTO.class);
         return channelDTO;

@@ -15,13 +15,13 @@ public class ChannelController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ChannelDTO getChannel(@PathVariable String id,@RequestParam(defaultValue = "10") Integer maxVideos,@RequestParam(defaultValue = "2") Integer maxComments){
+    public ChannelDTO getChannel(@PathVariable String id,@RequestParam(defaultValue = "10") Integer maxVideos,@RequestParam(defaultValue = "2") Integer maxComments) throws InterruptedException {
         return channelService.findChannelDTOByName(id,maxVideos,maxComments);
     }
 
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ChannelDTO postChannel(@PathVariable String id,@RequestParam(defaultValue = "10") Integer maxVideos,@RequestParam(defaultValue = "2") Integer maxComments) {
+    public ChannelDTO postChannel(@PathVariable String id,@RequestParam(defaultValue = "10") Integer maxVideos,@RequestParam(defaultValue = "2") Integer maxComments) throws InterruptedException {
         ChannelDTO channelDTO= channelService.postChannelDTOByName(id, maxVideos, maxComments);
         return channelDTO;
     }

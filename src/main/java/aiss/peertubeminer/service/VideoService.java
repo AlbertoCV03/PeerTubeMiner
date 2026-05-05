@@ -37,13 +37,15 @@
             return findAllVideosOfChannelName(name,10);
         }*/
 
-        public VideosDTO[] findAllVideosDTOOfChannelName(String name,Integer maxVideos,Integer maxComments){
+        public VideosDTO[] findAllVideosDTOOfChannelName(String name,Integer maxVideos,Integer maxComments) throws InterruptedException {
             /*maxVideos=(maxVideos!=null)?maxVideos:10;
             maxComments=(maxComments!=null)?maxComments:2;*/
+
             Videos video= findAllVideosOfChannelName(name,maxVideos);
             List<Datum> videolist=video.getData();
             List<VideosDTO> videosDTO=new ArrayList<>();
             for(Integer i=0;i<videolist.size();i++){
+                Thread.sleep(300);
                 VideosDTO videoDTO=new VideosDTO();
                 videoDTO.setId(videolist.get(i).getId());
                 videoDTO.setName(videolist.get(i).getName());
@@ -60,9 +62,10 @@
                 userDTO.setPicture_link(picture_link);
                 videoDTO.setUser(userDTO);
 
+                Thread.sleep(100);
                 CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getId());
                 videoDTO.setCaptionDTO(captionDTO);
-
+                Thread.sleep(100);
                 CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getId(),maxComments);
                 videoDTO.setCommentDTO(commentDTO);
 
