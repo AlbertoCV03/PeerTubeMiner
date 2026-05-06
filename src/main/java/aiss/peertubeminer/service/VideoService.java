@@ -45,22 +45,15 @@
             List<Datum> videolist=video.getData();
             List<VideosDTO> videosDTO=new ArrayList<>();
             for(Integer i=0;i<videolist.size();i++){
-                Thread.sleep(300);
+                Thread.sleep(100);
                 VideosDTO videoDTO=new VideosDTO();
                 videoDTO.setId(videolist.get(i).getId());
                 videoDTO.setName(videolist.get(i).getName());
                 videoDTO.setDescription(videolist.get(i).getDescription());
                 videoDTO.setReleaseTime(videolist.get(i).getCreatedAt());
 
-                UserDTO userDTO=new UserDTO();
-                userDTO.setId(null);
-                //userDTO.setId(null);
-                userDTO.setName(videolist.get(i).getAccount().getName());
-                userDTO.setUser_link(videolist.get(i).getAccount().getUrl());
-                Integer picture_link_index=videolist.get(i).getAccount().getAvatars().size() -1;
-                String picture_link= videolist.get(i).getAccount().getAvatars().get(picture_link_index).getFileUrl();
-                userDTO.setPicture_link(picture_link);
-                videoDTO.setUser(userDTO);
+                createUsersDTO(videoDTO, videolist);
+                videosDTO.add(videoDTO);
 
                 Thread.sleep(100);
                 CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getId());
@@ -80,6 +73,20 @@
             }
             VideosDTO[] res=videosDTO.toArray(new VideosDTO[0]);
             return res;
+
+        }
+        private static void createUsersDTO(VideosDTO videoDTO,List<Datum> videoList){
+
+            for(Integer i=0;i<videoList.size();i++){
+                UserDTO userDTO=new UserDTO();
+                userDTO.setId(null);
+                userDTO.setName(videoList.get(i).getAccount().getName());
+                userDTO.setUser_link(videoList.get(i).getAccount().getUrl());
+                Integer picture_link_index=videoList.get(i).getAccount().getAvatars().size() -1;
+                String picture_link= videoList.get(i).getAccount().getAvatars().get(picture_link_index).getFileUrl();
+                userDTO.setPicture_link(picture_link);
+                videoDTO.setUser(userDTO);
+            }
 
         }
 
