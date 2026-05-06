@@ -53,7 +53,6 @@
                 videoDTO.setReleaseTime(videolist.get(i).getCreatedAt());
 
                 createUsersDTO(videoDTO, videolist);
-                videosDTO.add(videoDTO);
 
                 Thread.sleep(100);
                 CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getId());
