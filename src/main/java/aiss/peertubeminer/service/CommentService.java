@@ -32,7 +32,7 @@ public class CommentService {
         List<CommentDTO> commentDTOS=new ArrayList<>();
         for(Integer i=0;i<comments.getData().size();i++){
             CommentDTO commentDTO=new CommentDTO();
-            commentDTO.setId(comments.getData().get(i).getId());
+            commentDTO.setId(comments.getData().get(i).getId().toString());
             commentDTO.setText(comments.getData().get(i).getText());
             commentDTO.setCreatedOn(comments.getData().get(i).getCreatedAt());
             commentDTOS.add(commentDTO);

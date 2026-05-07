@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CommentDTO {
     @JsonProperty("id")
-    private Integer id;
+    private String id;
 
     @JsonProperty("text")
     private String text;
@@ -24,12 +24,12 @@ public class CommentDTO {
     private String createdOn;
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
