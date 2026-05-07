@@ -45,7 +45,9 @@
             List<Datum> videolist=video.getData();
             List<VideosDTO> videosDTO=new ArrayList<>();
             for(Integer i=0;i<videolist.size();i++){
-                Thread.sleep(100);
+                if(maxVideos>20){
+                    Thread.sleep(100);
+                }
                 VideosDTO videoDTO=new VideosDTO();
                 videoDTO.setId(videolist.get(i).getId());
                 videoDTO.setName(videolist.get(i).getName());
@@ -54,10 +56,14 @@
 
                 createUsersDTO(videoDTO, videolist);
 
-                Thread.sleep(100);
+                if(maxVideos>20){
+                    Thread.sleep(100);
+                }
                 CaptionDTO[] captionDTO=captionService.getAllCaptionsDTO(videolist.get(i).getId());
                 videoDTO.setCaptionDTO(captionDTO);
-                Thread.sleep(100);
+                if(maxVideos>20){
+                    Thread.sleep(100);
+                }
                 CommentDTO[] commentDTO= commentService.findAllCommentsDTO(videolist.get(i).getId(),maxComments);
                 videoDTO.setCommentDTO(commentDTO);
 
