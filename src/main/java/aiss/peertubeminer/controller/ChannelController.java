@@ -10,11 +10,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Channel",description = "Channel operations")
+@Validated
 @RestController
 @RequestMapping("/peertube/v1")
 public class ChannelController {
@@ -22,13 +26,13 @@ public class ChannelController {
     ChannelService channelService;
 
     @Operation(
-            summary = "Retrieve a channel by its channel id",
-            description = "Get a channelDTO object by specifying its channel id")
+            summary = "Retrieve a PeerTube channel",
+            description = "Returns a channel along with videos, comments and captions")
     @GetMapping("/{channelId}")
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "List of channels",
+                    description = "List of PeerTube channels",
                     content = { @Content(
                             schema = @Schema(implementation = ChannelDTO.class),
                             mediaType = "application/json",
@@ -76,15 +80,15 @@ public class ChannelController {
                     content = { @Content(schema = @Schema()) })})
     @ResponseStatus(HttpStatus.OK)
     public ChannelDTO getChannel(
-            @Parameter(description = "Name of channel to be searched",example = "transport_evolved_take_2@peertube.tv")@PathVariable String channelId,
-            @Parameter(description = "Maximum number of videos to be searched")@RequestParam(defaultValue = "10") Integer maxVideos,
-            @Parameter(description = "Maximum number of comments per video to be searched")@RequestParam(defaultValue = "2") Integer maxComments)
+            @Parameter(description = "Name id of the channel to be searched",example = "transport_evolved_take_2@peertube.tv")@PathVariable String channelId,
+            @Parameter(description = "Maximum number of videos to be searched")@Min(1) @Max(100)@RequestParam(defaultValue = "10") Integer maxVideos,
+            @Parameter(description = "Maximum number of comments per video to be searched")@Min(1) @Max(100)@RequestParam(defaultValue = "2") Integer maxComments)
             throws InterruptedException {
         return channelService.findChannelDTOByName(channelId,maxVideos,maxComments);
     }
     @Operation(
-            summary = "Save a channel by its channel id",
-            description = "Post a channelDTO object to VideoMiner by specifying its channel id")
+            summary = "Retrieve and send a PeerTube channel",
+            description = "This operation stores a PeerTube channel on the VideoMiner  DB")
     @PostMapping("/{channelId}")
     @ApiResponses({
             @ApiResponse(
@@ -93,14 +97,19 @@ public class ChannelController {
                     content = { @Content(schema = @Schema(implementation = ChannelDTO.class),
                             mediaType = "application/json") }),
             @ApiResponse(
+                    responseCode = "404",
+                    description="❌ **Channel not found**",
+                    content = { @Content(schema = @Schema()) }),
+            @ApiResponse(
                     responseCode = "500",
-                    description="The sent channel object  was incorrectly formed. Usually caused by a non existing channel name",
-                    content = { @Content(schema = @Schema()) })})
+                    description="❌ **Internal server error**",
+                    content = { @Content(schema = @Schema()) })
+    })
     @ResponseStatus(HttpStatus.CREATED)
     public ChannelDTO postChannel(
-            @Parameter(description = "Name of channel to be created")@PathVariable String channelId,
-            @Parameter(description = "Maximum number of videos to be included")@RequestParam(defaultValue = "10") Integer maxVideos,
-            @Parameter(description = "Maximum number of comments per video to be included")@RequestParam(defaultValue = "2") Integer maxComments)
+            @Parameter(description = "Name of channel to be created", required = true)@PathVariable String channelId,
+            @Parameter(description = "Maximum number of videos to be included")@Min(1) @Max(100)@RequestParam(defaultValue = "10") Integer maxVideos,
+            @Parameter(description = "Maximum number of comments per video to be included")@Min(1) @Max(100)@RequestParam(defaultValue = "2") Integer maxComments)
             throws InterruptedException {
         ChannelDTO channelDTO= channelService.postChannelDTOByName(channelId, maxVideos, maxComments);
         return channelDTO;

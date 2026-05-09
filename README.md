@@ -2,19 +2,33 @@
 
 ## General Information
 
-- **OpenAPI Version:** 3.1.0
-- **API Version:** v0
-- **Base URL:** `http://localhost:8081`
+* **OpenAPI Version:** `3.1.0`
+* **API Version:** `v1`
+* **Base URL:** `http://localhost:8081`
+
+---
+
+# Overview
+
+The PeerTubeMiner API allows you to retrieve, adapt and store PeerTube channel data to VideoMiner API, including:
+
+* Channel information
+* Uploaded videos
+* Video comments
+* Video captions
+* User information
 
 ---
 
 # Channel Endpoints
 
-Operations related to channels.
+Operations related to PeerTube channels.
+
+---
 
 ## GET `/peertube/v1/{channelId}`
 
-Retrieve a channel by its channel ID.
+Retrieve a PeerTube channel.
 
 ### Description
 
@@ -22,20 +36,27 @@ Returns a `ChannelDTO` object containing channel information, videos, comments, 
 
 ### Parameters
 
-| Name | In | Type | Required | Default | Description |
-|---|---|---|---|---|---|
-| `channelId` | Path | `string` | ✅ | - | Name of channel to be searched |
-| `maxVideos` | Query | `integer` | ❌ | `10` | Maximum number of videos to be searched |
-| `maxComments` | Query | `integer` | ❌ | `2` | Maximum number of comments per video to be searched |
+| Name          | In    | Type      | Required | Default | Constraints | Description                                         |
+| ------------- | ----- | --------- | -------- | ------- | ----------- | --------------------------------------------------- |
+| `channelId`   | Path  | `string`  | ✅        | -       | -           | Name ID of the channel to be searched               |
+| `maxVideos`   | Query | `integer` | ❌        | `10`    | `1 - 100`   | Maximum number of videos to be searched             |
+| `maxComments` | Query | `integer` | ❌        | `2`     | `1 - 100`   | Maximum number of comments per video to be searched |
 
 ### Example Request
 
 ```http
 GET /peertube/v1/transport_evolved_take_2@peertube.tv?maxVideos=10&maxComments=2
+```
+
+---
 
 ### Responses
 
 #### ✅ 200 - Successful Response
+
+Returns a `ChannelDTO` object.
+
+##### Example Response
 
 ```json
 {
@@ -73,6 +94,8 @@ GET /peertube/v1/transport_evolved_take_2@peertube.tv?maxVideos=10&maxComments=2
 }
 ```
 
+---
+
 #### ❌ 404 - Channel Not Found
 
 ```text
@@ -83,19 +106,19 @@ Channel not found
 
 ## POST `/peertube/v1/{channelId}`
 
-Save a channel by its channel ID.
+Retrieve and store a PeerTube channel.
 
 ### Description
 
-Creates and stores a `ChannelDTO` object in VideoMiner.
+This operation retrieves a PeerTube channel and stores it in the VideoMiner database.
 
 ### Parameters
 
-| Name | In | Type | Required | Default | Description |
-|---|---|---|---|---|---|
-| `channelId` | Path | `string` | ✅ | - | Name of channel to be created |
-| `maxVideos` | Query | `integer` | ❌ | `10` | Maximum number of videos to be included |
-| `maxComments` | Query | `integer` | ❌ | `2` | Maximum number of comments per video to be included |
+| Name          | In    | Type      | Required | Default | Constraints | Description                                         |
+| ------------- | ----- | --------- | -------- | ------- | ----------- | --------------------------------------------------- |
+| `channelId`   | Path  | `string`  | ✅        | -       | -           | Name of the channel to be created                   |
+| `maxVideos`   | Query | `integer` | ❌        | `10`    | `1 - 100`   | Maximum number of videos to be included             |
+| `maxComments` | Query | `integer` | ❌        | `2`     | `1 - 100`   | Maximum number of comments per video to be included |
 
 ### Example Request
 
@@ -103,17 +126,28 @@ Creates and stores a `ChannelDTO` object in VideoMiner.
 POST /peertube/v1/transport_evolved_take_2@peertube.tv?maxVideos=10&maxComments=2
 ```
 
+---
+
 ### Responses
 
 #### ✅ 201 - Channel Successfully Created
 
 Returns a `ChannelDTO` object.
 
-#### ❌ 500 - Invalid Channel Object
+---
+
+#### ❌ 404 - Channel Not Found
 
 ```text
-The sent channel object was incorrectly formed.
-Usually caused by a non existing channel name.
+Channel not found
+```
+
+---
+
+#### ❌ 500 - Internal Server Error
+
+```text
+Internal server error
 ```
 
 ---
@@ -122,55 +156,76 @@ Usually caused by a non existing channel name.
 
 ## ChannelDTO
 
-| Field | Type |
-|---|---|
-| `id` | `string` |
-| `name` | `string` |
-| `description` | `string` |
-| `createdTime` | `string` |
-| `videos` | `VideosDTO[]` |
+Represents a PeerTube channel in the required format for VideoMiner.
+
+| Field         | Type          | Description            |
+| ------------- | ------------- | ---------------------- |
+| `id`          | `string`      | Channel identifier     |
+| `name`        | `string`      | Channel name           |
+| `description` | `string`      | Channel description    |
+| `createdTime` | `string`      | Channel creation date  |
+| `videos`      | `VideosDTO[]` | List of channel videos |
 
 ---
 
 ## VideosDTO
 
-| Field | Type |
-|---|---|
-| `id` | `string` |
-| `name` | `string` |
-| `description` | `string` |
-| `releaseTime` | `string` |
-| `user` | `UserDTO` |
-| `captions` | `CaptionDTO[]` |
-| `comments` | `CommentDTO[]` |
+| Field         | Type           | Description        |
+| ------------- | -------------- | ------------------ |
+| `id`          | `string`       | Video identifier   |
+| `name`        | `string`       | Video title        |
+| `description` | `string`       | Video description  |
+| `releaseTime` | `string`       | Video release date |
+| `user`        | `UserDTO`      | Video uploader     |
+| `captions`    | `CaptionDTO[]` | Available captions |
+| `comments`    | `CommentDTO[]` | Video comments     |
 
 ---
 
 ## UserDTO
 
-| Field | Type |
-|---|---|
-| `id` | `integer` |
-| `name` | `string` |
-| `user_link` | `string` |
-| `picture_link` | `string` |
+| Field          | Type      | Description              |
+| -------------- | --------- | ------------------------ |
+| `id`           | `integer` | User identifier          |
+| `name`         | `string`  | Username                 |
+| `user_link`    | `string`  | Link to the user profile |
+| `picture_link` | `string`  | Link to the user avatar  |
 
 ---
 
 ## CaptionDTO
 
-| Field | Type |
-|---|---|
-| `id` | `string` |
-| `link` | `string` |
-| `language` | `string` |
+| Field      | Type     | Description        |
+| ---------- | -------- | ------------------ |
+| `id`       | `string` | Caption identifier |
+| `link`     | `string` | Caption file link  |
+| `language` | `string` | Caption language   |
 
 ---
 
 ## CommentDTO
 
-| Field | Type |
-|---|---|
-| `id` | `string` |
-| `text` | `string` |
-| `createdOn` | `string` |
+| Field       | Type     | Description           |
+| ----------- | -------- | --------------------- |
+| `id`        | `string` | Comment identifier    |
+| `text`      | `string` | Comment content       |
+| `createdOn` | `string` | Comment creation date |
+
+---
+
+# Error Codes
+
+| Status Code | Description                    |
+| ----------- | ------------------------------ |
+| `200`       | Request completed successfully |
+| `201`       | Resource created successfully  |
+| `404`       | Channel not found              |
+| `500`       | Internal server error          |
+
+---
+
+# Contact
+
+Project repository:
+
+* [PeerTubeMiner GitHub Repository](https://github.com/AlbertoCV03/PeerTubeMiner?utm_source=chatgpt.com)

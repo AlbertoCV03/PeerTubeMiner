@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
@@ -16,15 +17,20 @@ import java.util.List;
         "videos"
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Schema(description = "Represents a PeerTube channel in the required format for VideoMiner")
 public class ChannelDTO {
     @JsonProperty("id")
     private String id;
+
     @JsonProperty("name")
     private String name;
+
     @JsonProperty("description")
     private String description;
+
     @JsonProperty("createdTime")
     private String createdTime;
+
     @JsonProperty("videos")
     private List<VideosDTO> videos;
 
