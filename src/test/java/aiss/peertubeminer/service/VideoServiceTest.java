@@ -18,14 +18,14 @@ class VideoServiceTest {
     @Test
     @DisplayName("List Videos")
     void findAllVideosOfChannelName(){
-        Videos videos= service.findAllVideosOfChannelName("she_drives_mobility@tube.tchncs.de",null);
+        Videos videos= service.findAllVideosOfChannelName("she_drives_mobility@tube.tchncs.de",10);
         System.out.println(videos);
     }
 
      @Test
     @DisplayName("List VideosDTO")
     void findAllVideosDTOOfChannelName() throws InterruptedException {
-        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName("she_drives_mobility@tube.tchncs.de",null,null);
+        VideosDTO[] videosDTO=service.findAllVideosDTOOfChannelName("she_drives_mobility@tube.tchncs.de",10,2);
         System.out.println(List.of(videosDTO));
     }
 
