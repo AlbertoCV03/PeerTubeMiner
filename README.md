@@ -226,6 +226,6 @@ Represents a PeerTube channel in the required format for VideoMiner.
 
 # Contact
 
-Project repository:
+VideoMiner repository:
 
-* [PeerTubeMiner GitHub Repository](https://github.com/AlbertoCV03/PeerTubeMiner?utm_source=chatgpt.com)
+* [VideoMiner GitHub Repository](https://github.com/AlbertoCV03/VideoMiner)
